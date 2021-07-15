@@ -11,7 +11,7 @@ try {
 
     // prepare sql and bind parameters
     $stmt = $conn->prepare("INSERT INTO utenti (NomeUtente, Email, Password, Telefono)
-    VALUES (':NomeUtente', ':Email', ':Password', ':Telefono')");
+    VALUES (:NomeUtente, :Email, :Password, :Telefono)");
     
     // insert a row
     $nomeutente = $_POST["nome"];
