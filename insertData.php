@@ -1,34 +1,26 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "youblog";
+require ("./functions.php");
 
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    // set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+//richiamo la funzione da functions
+$conn = connectDB();
 
-    // prepare sql and bind parameters
-    $stmt = $conn->prepare("INSERT INTO utenti (NomeUtente, Email, Password, Telefono)
-    VALUES (:NomeUtente, :Email, :Password, :Telefono)");
-    
-    // insert a row
-    $nomeutente = $_POST["nome"];
-    $email = $_POST["email"];
-    $passw = $_POST["password"];
-    $telefono = $_POST["telefono"];
-    
-    $stmt->bindParam(':NomeUtente', $nomeutente);
-    $stmt->bindParam(':Email', $email);
-    $stmt->bindParam(':Password', $passw);
-    $stmt->bindParam(':Telefono', $telefono);
+// preparo sql e collego i parametri
+$stmt = $conn->prepare("INSERT INTO utenti (NomeUtente, Email, Password, Telefono)
+VALUES (:NomeUtente, :Email, :Password, :Telefono)");
+      
+// passa i dati dal form
+$nomeutente = $_POST["nome"];
+$email = $_POST["email"];
+$passw = $_POST["password"];
+$telefono = $_POST["telefono"];
+      
+//invio delle credenziali
+$stmt->bindParam(':NomeUtente', $nomeutente);
+$stmt->bindParam(':Email', $email);
+$stmt->bindParam(':Password', $passw);
+$stmt->bindParam(':Telefono', $telefono);
 
-    $stmt->execute();
-    
-    echo "success";
-}catch(PDOException $e) {
-  echo "Error: " . $e->getMessage();
-}
-$conn = null;
+$stmt->execute();
+      
+echo "success";
 ?>
