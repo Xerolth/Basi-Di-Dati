@@ -9,4 +9,4 @@ permette di pubblicare nei blog testi e foto. Ogni blog è associato ad una spec
 categoria e ad una sottocategoria, che identificano molteplici aree di interesse (attualità,
 tecnologia, etc.), di conseguenza il sito si rivolge ad un pubblico generalista.
 
-Per ulteriori informazioni è consigliata la lettura del file Relazione.pdf
+Per ulteriori informazioni è consigliata la lettura del file Relazione.pdf.
